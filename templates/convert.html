@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ unit_type | capitalize }}{% endblock %}
+
+{% block content %}
+    <h2>{{ unit_type | capitalize }} Converter </h2>
+
+    <form method="POST">
+        <label for="value">Value:</label>
+        <input type="number" name="value" id="value" step="any" placeholder="e.g. 100" required>
+
+        <br>
+
+        <label for="from_unit">From:</label>
+        <select name="from_unit" id="from_unit">
+            {% for unit in units %}
+                <option value="{{ unit }}" {% if unit == from_unit %}selected{% endif %}>
+                    {{ unit | capitalize }}
+                </option>
+            {% endfor %}
+        </select>
+        
+        <br>
+
+        <label for="to_unit">To:</label>
+        <select name="to_unit" id="to_unit">
+            {% for unit in units %}
+                <option value="{{ unit }}" {% if unit == to_unit %}selected{% endif %}>
+                    {{ unit | capitalize }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Convert</button>
+    </form>
+
+    {% if result %}
+        <p>Result: {{ result | round(4) }} {{ to_unit | capitalize }}s</p>
+    {% endif %} 
+
+    <br>
+    <a href="/">← Back</a>
+{% endblock %}

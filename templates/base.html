@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Unit Converter{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Unit Converter</h1>
+
+    <nav class="options">
+        <a href="/convert/length">Length</a>
+        <a href="/convert/weight">Weight</a>
+        <a href="/convert/temperature">Temperature</a>
+    </nav>
+
+    <hr>
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>
